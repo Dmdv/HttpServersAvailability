@@ -1,0 +1,13 @@
+servers:
+- google.com  
+- yandex.ru
+- instagram.com
+- error
+- google342325235.com
+
+host: "localhost"
+port: 5432
+database: "server_stat"
+httptimeout_ms: 2000
+user: postgres
+pass: 1977perplex

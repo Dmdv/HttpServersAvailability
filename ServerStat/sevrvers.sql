@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS servers;
+CREATE TABLE servers (
+  ID serial NOT NULL,
+  URL varchar(256) NOT NULL,
+  AVAILABLE boolean NOT NULL,
+  TIME TIMESTAMPTZ NOT NULL,	
+  CONSTRAINT pk_server PRIMARY KEY(ID)
+);
