@@ -186,7 +186,7 @@ func createConnection(connStr string) *sql.DB {
 
 func refresh(db *sql.DB) (ServerStatuses, error) {
 
-	rows, err := db.Query("select url, available, time from servers where (now() - time) < interval '5 minutes';")
+	rows, err := db.Query("select url, available, time from servers where ((select time from servers order by time desc limit 1) - time) <= Interval '5 minutes' order by time desc;")
 	if err != nil {
 		panic(err)
 	}
