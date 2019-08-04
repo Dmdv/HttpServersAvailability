@@ -42,21 +42,11 @@ type Settings struct {
 
 func main() {
 
-	// var pg Pages
-
-	// pg = append(pg, Page{"First Page", true})
-	// pg = append(pg, Page{"Second Page", true})
-
-	// pagesJson, err := json.Marshal(pg)
-	// if err != nil {
-	// 	log.Fatal("Cannot encode to JSON ", err)
-	// }
-
 	templates := template.Must(template.ParseFiles("index.html"))
 
 	settings := readSettings("settings.yaml")
 
-	connStr := fmt.Sprintf("postgres://%s:%s@localhost:%s/status?sslmode=disable", settings.user, settings.pass, settings.port)
+	connStr := fmt.Sprintf("postgres://%s:%s@localhost:%s/%s?sslmode=disable", settings.user, settings.pass, settings.port, settings.database)
 
 	db := createConnection(connStr)
 	defer db.Close()

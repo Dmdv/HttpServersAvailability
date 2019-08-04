@@ -188,7 +188,7 @@ func main() {
 
 	settings := readSettings("settings.yaml")
 
-	connStr := fmt.Sprintf("postgres://%s:%s@localhost:%s/status?sslmode=disable", settings.user, settings.pass, settings.port)
+	connStr := fmt.Sprintf("postgres://%s:%s@localhost:%s/%s?sslmode=disable", settings.user, settings.pass, settings.port, settings.database)
 
 	db := createConnection(connStr)
 	defer db.Close()

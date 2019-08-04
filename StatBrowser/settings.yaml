@@ -1,5 +1,5 @@
 host: "localhost"
 port: 5432
-database: "server_stat"
+database: "status"
 user: postgres
 pass: 1977perplex
