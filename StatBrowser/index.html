@@ -73,6 +73,7 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery-dateformat.min.js"></script>
 
 	<script type="text/javascript">
 		function refreshStatus() {
@@ -92,7 +93,7 @@
 			  refreshResults.empty();
 	
 			  parsed.forEach(function(result) {
-				var row = $("<tr class='row100 body'><td class='cell100 column1'>" + result.Url + "</td><td class='cell100 column2'>" + result.Available + "</td><td class='cell100 column3'>" + result.Time +  "</td></tr>");
+				var row = $("<tr class='row100 body'><td class='cell100 column1'>" + result.Url + "</td><td class='cell100 column2'>" + result.Available + "</td><td class='cell100 column3'>" + $.format.toBrowserTimeZone(result.Time) +  "</td></tr>");
 				refreshResults.append(row);
 			  });
 			}
