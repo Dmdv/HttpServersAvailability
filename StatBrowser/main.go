@@ -63,6 +63,10 @@ func main() {
 
 	fmt.Println("Server started OK")
 
+	dir := http.Dir("./assets/")
+	handler := http.StripPrefix("/assets/", http.FileServer(dir))
+	http.Handle("/assets/", handler)
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Serving /...")
 
