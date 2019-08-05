@@ -1,5 +1,5 @@
 # HttpServersAvailability
-Checks servers availability
+Demo project to check servers availability
 
 ![](about.jpg)
 
