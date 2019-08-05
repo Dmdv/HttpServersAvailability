@@ -6,12 +6,16 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"os/signal"
 	"strings"
 	"sync"
 	"time"
 
 	_ "github.com/lib/pq"
 	"github.com/olebedev/config"
+
+	"github.com/robfig/cron"
 )
 
 type Settings struct {
@@ -185,6 +189,20 @@ func createConnection(connStr string) *sql.DB {
 }
 
 func main() {
+
+	c := cron.New()
+
+	c.AddFunc("*/60 * * * *", workerUnit)
+
+	go c.Start()
+	defer c.Stop()
+
+	sig := make(chan os.Signal)
+	signal.Notify(sig, os.Interrupt, os.Kill)
+	<-sig
+}
+
+func workerUnit() {
 
 	settings := readSettings("settings.yaml")
 
