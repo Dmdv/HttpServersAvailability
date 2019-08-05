@@ -16,4 +16,4 @@ port: 5432
 database: "status"
 httptimeout_ms: 2000
 user: postgres
-pass: 1977perplex
+pass: user_pass

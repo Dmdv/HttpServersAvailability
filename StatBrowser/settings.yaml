@@ -2,4 +2,4 @@ host: "localhost"
 port: 5432
 database: "status"
 user: postgres
-pass: 1977perplex
+pass: user_pass
